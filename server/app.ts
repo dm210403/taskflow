@@ -8,8 +8,7 @@ import { anthropic } from "@ai-sdk/anthropic";
 
 // Hono is mounted under /api by the Next.js route handler, so paths here
 // are relative to that (e.g. this becomes /api/tasks).
-const app = new Hono().basePath("/api");
-
+const app = new Hono<{ Variables: { userId: string } }>().basePath("/api");
 app.use("/*", cors());
 
 // ---------- auth middleware ----------
